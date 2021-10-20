@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Zanshin Landing Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+        @import url('https://fonts.googleapis.com/css?family=Raleway');
+
+        :root {
+            --base-font-size-small: 16px;
+            --base-font-size-normal: 18px;
+        }
+
+        html, body {
+            height: 100%;
+            position: relative;
+            margin: 0;
+        }
+
+        body {
+            visibility: hidden;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        #header {
+            padding: 25px 13%;
+            left: 0px;
+            right: 0px;
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            /*margin-bottom: 30px;*/
+        }
+
+        #header-buttons {
+            width: 65%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        #first-button {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 30px;
+        }
+
+        #first-button:hover {
+            background-color: rgba(255,255,255,0.08);
+            transition: background-color 0.5s;
+        }
+
+        #header-buttons .buttons {
+            margin-left: 0%;
+            padding: 10px 20px;
+        }
+
+        #header-buttons a {
+            font-family: "Open Sans";
+            font-size: var(--base-font-size-small);
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #header-buttons a:hover {
+            color: #3B516E;
+            transition: color 0.5s;
+        }
+
+        #switch-language-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-family: "Open Sans";
+            font-size: var(--base-font-size-small);
+            color: white;
+            cursor: default;
+        }
+
+        .language-buttons {
+            padding: 5px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            border-radius: 15px;
+        }
+
+        .language-buttons:first-child {
+            margin-right: 10px;
+        }
+
+        .language-buttons:last-child {
+            margin-left: 10px;
+        }
+
+        .language-buttons:hover {
+            color: #3B516E;
+            transition: color 0.5s;
+        }
+
+        #navigation {
+            position: fixed;
+            z-index: 1;
+            top: 45%;
+            right: 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 10%;
+        }
+
+        .navigation-btns {
+            height: 10px;
+            width: 10px;
+            border-radius: 10px;
+            background-color: transparent;
+            border: 3px solid #F4F3FF;
+            transition: background-color 0.5s;
+        }
+
+        .navigation-btns:first-child {
+            background-color: #E6EDFF;
+        }
+
+        #home-wrapper {
+            background: url(../static/images/zanshin-landing-bg-6.png) no-repeat top right fixed;
+            background-size: cover;
+            height: 90%;
+            padding: 10% 13% 0 13%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: inset 0px -50px 80px -45px rgba(0, 0, 0, 0.25);
+        }
+
+        #title {
+            width: 60%;
+            font-family: "Raleway";
+            font-weight: 500;
+            font-size: 36px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        #sub-title {
+            width: 40%;
+            font-family: "Open Sans";
+            font-weight: 300;
+            font-size: var(--base-font-size-small);
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .button {
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+            border-radius: 40px;
+            padding: 10px 20px;
+
+            font-family: "Open Sans";
+            font-weight: normal;
+            font-size: var(--base-font-size-normal);
+            text-align: center;
+        }
+
+        .button:hover {
+            color: #678DC8;
+            border-color: #678DC8;
+            transition: color 0.5s, border-color 0.5s;
+            cursor: pointer;
+        }
+
+        #mockup {
+            width: 100%;
+        }
+
+        #description-wrapper {
+            padding: 5% 0;
+            height: fit-content;
+            width: 100%;
+            background: #A8C7F7;
+            position: relative;
+        }
+
+        #description {
+            padding: 0 20%;
+            font-family: "Open Sans";
+            font-weight: normal;
+            font-size: var(--base-font-size-normal);
+            text-align: center;
+            color: white;
+        }
+
+        #decoration-1 {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+        }
+
+        #decoration-2 {
+            position: absolute;
+            right: 12%;
+            bottom: 15%;
+        }
+
+        #pros-wrapper {
+            padding: 5% 13%;
+            height: fit-content;
+        }
+
+        .pro {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pro-image {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pro-image img {
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+        }
+
+        .pro-text {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pro-title {
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 26px;
+            color: #3B516E;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .pro-subtitle {
+            font-family: "Open Sans";
+            font-style: normal;
+            font-weight: normal;
+            font-size: var(--base-font-size-normal);
+            line-height: 28px;
+            display: flex;
+            align-items: center;
+
+            color: #3B516E;
+        }
+
+        .vertical-line {
+            height: 100px;
+            width: 3px;
+            margin-left: 50%;
+            background-image: linear-gradient(#A8C7F7 33%, rgba(255, 255, 255, 0) 0%);
+            background-size: 3px 10px;
+        }
+
+        #feedback-wrapper {
+            background-color: #AED8FF;
+            padding: 5% 13%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            align-items: center;
+        }
+
+        #feedback-form {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #feedback-title {
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 26px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        #feedback-subtitle {
+            font-family: "Open Sans";
+            font-style: normal;
+            font-weight: 500;
+            font-size: var(--base-font-size-normal);
+            line-height: var(--base-font-size-normal);
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        #social-networks {
+            height: fit-content;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .social-networks-item {
+            height: 25px;
+            width: 25px;
+        }
+
+        .input {
+            font-family: "Open Sans";
+            font-size: var(--base-font-size-normal);
+            text-align: left;
+            padding: 15px 10px;
+            color: #3B516E;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .input:focus {
+            outline: none;
+        }
+
+        ::-webkit-input-placeholder {
+            text-align:left;
+            color: #3B516E;
+            opacity: 60%;
+        }
+        input:-moz-placeholder {
+            text-align:left;
+            color: #3B516E;
+            opacity: 60%;
+        }
+
+        #sender-info {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            height: 50px;
+        }
+
+        #name-input {
+            width: 30%;
+        }
+
+        #email-input {
+            width: 58%;
+        }
+
+        #message-input {
+            height: 200px;
+            resize: none;
+            margin-bottom: 20px;
+        }
+
+        #send-btn {
+            width: 50%;
+            align-self: center;
+        }
+
+        #copyright {
+            margin-top: -30px;
+            text-align: center;
+            font-family: "Open Sans";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            color: white;
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+          rel="stylesheet">
+</head>
+<body>
+<div id="header">
+    <a href=""><img src="../static/images/zanshin-logo.png" style="height: 38px;  margin-left: 1px;"></a>
+    <div id="header-buttons">
+        <div class="buttons" id="first-button"><a id="first-button-title" href="">Прототип</a></div>
+        <div class="buttons"><a id="second-button" href="">Документация</a></div>
+        <div class="buttons"><a id="third-button" href="">Контакты</a></div>
+        <div class="buttons" id="switch-language-buttons">
+            <div class="language-buttons" id="en-language-button">EN</div>
+            <div style="border-right: 2px solid white; margin: 5px 0;"></div>
+            <div class="language-buttons" id="ru-language-button">RU</div>
+        </div>
+    </div>
+</div>
+<div id="navigation">
+    <div class="navigation-btns" id="home-btn" onclick="jump('home-wrapper')"></div>
+    <div class="navigation-btns" onclick="jump('description-wrapper')"></div>
+    <div class="navigation-btns" onclick="jump('feedback-wrapper')"></div>
+</div>
+<div id="home-wrapper">
+    <div id="title">Разнообразный и богатый опыт рамки и место обучения кадров</div>
+    <div id="sub-title">Таким образом сложившаяся структура организации играет важную роль в формировании системы обучения кадров</div>
+    <div class="button" id="go-to-prototype-button">Перейти к прототипу</div>
+    <img id="mockup" src="../static/images/mockup.png">
+</div>
+<div id="description-wrapper">
+    <img id="decoration-1" src="../static/images/decoration-1.png" alt="">
+    <img id="decoration-2" src="../static/images/decoration-2.png" alt="">
+    <div id="description">
+        Разнообразный и богатый опыт рамки и место обучения кадров представляет собой интересный эксперимент проверки соответствующий условий активизации. Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет оценить значение систем массового участия. Не следует, однако забывать, что рамки и место обучения кадров представляет собой интересный эксперимент проверки дальнейших направлений развития. Таким образом сложившаяся структура организации играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям.
+    </div>
+</div>
+<div id="pros-wrapper">
+    <div class="pro">
+        <div class="pro-image"><img src="../static/images/pro-1.png" alt=""></div>
+        <div class="pro-text">
+            <div class="pro-title" id="pro-1-title">
+                Супер-плюс номер 1
+            </div>
+            <div class="pro-subtitle" id="pro-1-subtitle">
+                Таким образом новая модель организационной деятельности играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям.
+            </div>
+        </div>
+    </div>
+    <div class="vertical-line"></div>
+    <div class="pro">
+        <div class="pro-text">
+            <div class="pro-title" id="pro-2-title">
+                Супер-плюс номер 2
+            </div>
+            <div class="pro-subtitle" id="pro-2-subtitle">
+                С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности требуют определения и уточнения системы обучения кадров, соответствует насущным потребностям.
+            </div>
+        </div>
+        <div class="pro-image"><img src="../static/images/pro-2.png" alt=""></div>
+    </div>
+    <div class="vertical-line"></div>
+    <div class="pro">
+        <div class="pro-image"><img src="../static/images/pro-3.png" alt=""></div>
+        <div class="pro-text">
+            <div class="pro-title" id="pro-3-title">
+                Супер-плюс номер 3
+            </div>
+            <div class="pro-subtitle" id="pro-3-subtitle">
+                Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание направлений прогрессивного развития. Повседневная практика показывает, что постоянный количественный рост и сфера нашей активности играет важную роль в формировании модели развития.
+            </div>
+        </div>
+    </div>
+</div>
+<div id="feedback-wrapper">
+    <div id="feedback-title">Свяжитесь с нами</div>
+    <div id="feedback-subtitle">Вы можете заполнить форму ниже или написать нам в социальных сетях:</div>
+    <div id="social-networks">
+        <a href="#"><img class="social-networks-item" src="../static/images/telegram_icon.png" alt=""></a>
+    </div>
+    <div id="feedback-form">
+        <div id="sender-info">
+            <input id="name-input" class="input" type="text" placeholder="Имя">
+            <input id="email-input" class="input" type="text" placeholder="Эл. почта">
+        </div>
+        <textarea id="message-input" class="input" placeholder="Введите сообщение здесь..."></textarea>
+        <div class="button" id="send-btn">Отправить</div>
+    </div>
+</div>
+<div id="copyright">© 2021 by Zanshin Team</div>
+</body>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    const languages = {
+        "rus": {
+            firstButtonTitle: 'Прототип',
+            secondButtonTitle: 'Документация',
+            thirdButtonTitle: 'Контакты',
+            title: 'Разнообразный и богатый опыт рамки и место обучения кадров',
+            subtitle: 'Таким образом сложившаяся структура организации играет важную роль в формировании системы обучения кадров',
+            goToPrototypeBtnTitle: 'Перейти к прототипу',
+            description: 'Разнообразный и богатый опыт рамки и место обучения кадров представляет собой интересный эксперимент проверки соответствующий условий активизации. Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет оценить значение систем массового участия. Не следует, однако забывать, что рамки и место обучения кадров представляет собой интересный эксперимент проверки дальнейших направлений развития. Таким образом сложившаяся структура организации играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям.',
+            firstProTitle: 'Супер-плюс номер 1',
+            firstProSubtitle: 'Таким образом новая модель организационной деятельности играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям.',
+            secondProTitle: 'Супер-плюс номер 2',
+            secondProSubtitle: 'С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности требуют определения и уточнения системы обучения кадров, соответствует насущным потребностям.',
+            thirdProTitle: 'Супер-плюс номер 3',
+            thirdProSubtitle: 'Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание направлений прогрессивного развития. Повседневная практика показывает, что постоянный количественный рост и сфера нашей активности играет важную роль в формировании модели развития.',
+            feedbackTitle: 'Свяжитесь с нами',
+            feedbackSubtitle: 'Вы можете заполнить форму ниже или написать нам в социальных сетях:',
+            nameInputPlaceholder: 'Имя',
+            emailInputPlaceholder: 'Эл. почта',
+            messageInputPlaceholder: 'Введите сообщение здесь...',
+            sendBtnTitle: 'Отправить',
+        },
+        "eng": {
+            firstButtonTitle: 'Prototype',
+            secondButtonTitle: 'Documentation',
+            thirdButtonTitle: 'Contacts',
+            title: ' Adipiscing quam vel hac sodales inceptos suspendisse tellus',
+            subtitle: 'Lorem ipsum dolor sit amet quisque risus scelerisque pulvinar curabitur a accumsan nam nisl ac turpis primis sem vestibulum augue fringilla velit',
+            goToPrototypeBtnTitle: 'Go to prototype',
+            description: 'Convallis curae justo nisi vitae nullam cras dictum elementum ac torquent conubia est vel amet imperdiet magna adipiscing netus et pulvinar non tristique feugiat lacus augue elementum suspendisse aliquam sodales semper quis vel sapien volutpat dictumst iaculis integer aptent nullam adipiscing tempor ultrices donec eleifend magna rutrum eu nec laoreet.',
+            firstProTitle: 'Pro title number 1',
+            firstProSubtitle: 'Posuere arcu odio euismod nisi tellus tempor euismod lobortis praesent porta tortor dictum arcu sollicitudin iaculis pharetra platea dictum ornare dictum ante nostra elit enim ut diam porttitor fringilla vel molestie gravida amet ornare est ad cras metus etiam dictumst urna lorem consequat venenatis sapien morbi fusce quam urna conubia.',
+            secondProTitle: 'Pro title number 2',
+            secondProSubtitle: 'Orci rutrum habitasse netus etiam blandit nec ad platea volutpat luctus tempus turpis elementum habitant non sollicitudin feugiat volutpat ullamcorper proin adipiscing habitant fusce varius dictum maecenas viverra sapien risus vivamus vehicula eleifend tempus auctor sit nec consequat tortor.',
+            thirdProTitle: 'Pro title number 3',
+            thirdProSubtitle: 'Libero nunc malesuada aliquet aenean condimentum dapibus taciti vehicula class aliquam platea purus blandit sem cubilia curabitur ullamcorper urna varius pellentesque praesent blandit gravida viverra iaculis dictumst sem dolor in quisque quam mauris purus sollicitudin mattis mollis per accumsan nunc aliquam.',
+            feedbackTitle: 'Contact us',
+            feedbackSubtitle: 'You can fill out the form below or write to us on social networks:',
+            nameInputPlaceholder: 'Name',
+            emailInputPlaceholder: 'E-mail',
+            messageInputPlaceholder: 'Input your message here...',
+            sendBtnTitle: 'Send',
+        }
+    }
+
+    window.addEventListener("load", async function (event) {
+        console.log(localStorage.getItem('language'));
+        if (localStorage.getItem('language') === null)
+            setLanguage('eng');
+        else
+            setLanguage(localStorage.getItem('language'))
+        document.body.style.visibility = "visible";
+    })
+
+    const $ruLanguageBtn = document.getElementById('ru-language-button');
+    const $enLanguageBtn = document.getElementById('en-language-button');
+
+    $ruLanguageBtn.onclick = () => {
+        setLanguage('rus');
+    }
+
+    $enLanguageBtn.onclick = () => {
+        setLanguage('eng');
+    }
+
+    const setLanguage = (language) => {
+        localStorage.setItem('language', language);
+        if (language === 'rus') {
+            $ruLanguageBtn.style.backgroundColor = 'rgba(255,255,255,0.2)';
+            $enLanguageBtn.style.backgroundColor = 'transparent';
+        }
+        else {
+            $enLanguageBtn.style.backgroundColor = 'rgba(255,255,255,0.2)';
+            $ruLanguageBtn.style.backgroundColor = 'transparent';
+        }
+        document.getElementById('first-button-title').innerText = languages[language].firstButtonTitle;
+        document.getElementById('second-button').innerText = languages[language].secondButtonTitle;
+        document.getElementById('third-button').innerText = languages[language].thirdButtonTitle;
+        document.getElementById('title').innerText = languages[language].title;
+        document.getElementById('sub-title').innerText = languages[language].subtitle;
+        document.getElementById('go-to-prototype-button').innerText = languages[language].goToPrototypeBtnTitle;
+        document.getElementById('description').innerText = languages[language].description;
+        document.getElementById('pro-1-title').innerText = languages[language].firstProTitle;
+        document.getElementById('pro-1-subtitle').innerText = languages[language].firstProSubtitle;
+        document.getElementById('pro-2-title').innerText = languages[language].secondProTitle;
+        document.getElementById('pro-2-subtitle').innerText = languages[language].secondProSubtitle;
+        document.getElementById('pro-3-title').innerText = languages[language].thirdProTitle;
+        document.getElementById('pro-3-subtitle').innerText = languages[language].thirdProSubtitle;
+        document.getElementById('feedback-title').innerText = languages[language].feedbackTitle;
+        document.getElementById('feedback-subtitle').innerText = languages[language].feedbackSubtitle;
+        document.getElementById('name-input').placeholder = languages[language].nameInputPlaceholder;
+        document.getElementById('email-input').placeholder = languages[language].emailInputPlaceholder;
+        document.getElementById('message-input').placeholder = languages[language].messageInputPlaceholder;
+        document.getElementById('send-btn').innerText = languages[language].sendBtnTitle;
+    }
+
+    $(document).load().scrollTop(0);
+
+    const navigatorAnimation = () => {
+        const top = document.documentElement.scrollTop;
+        let navigationBtns = document.getElementById('navigation').getElementsByTagName('div');
+        if (top >= 0 && top <= 740) {
+            navigationBtns[0].style.backgroundColor = '#F4F3FF';
+            navigationBtns[1].style.backgroundColor = 'transparent';
+            navigationBtns[2].style.backgroundColor = 'transparent';
+        }
+        else if (top > 740 && top < 2000) {
+            navigationBtns[0].style.backgroundColor = 'transparent';
+            navigationBtns[1].style.backgroundColor = '#F4F3FF';
+            navigationBtns[2].style.backgroundColor = 'transparent';
+        }
+        else {
+            navigationBtns[0].style.backgroundColor = 'transparent';
+            navigationBtns[1].style.backgroundColor = 'transparent';
+            navigationBtns[2].style.backgroundColor = '#F4F3FF';
+        }
+    }
+
+    window.addEventListener('scroll', function() {
+        navigatorAnimation();
+    });
+
+    function jump(h){
+        let top = document.getElementById(h).offsetTop;
+        window.scrollTo({top: top, behavior: "smooth"});
+        navigatorAnimation();
+    }
+</script>
